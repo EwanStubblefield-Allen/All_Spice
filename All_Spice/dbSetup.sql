@@ -87,3 +87,17 @@ CREATE TABLE ingredients(
 ) DEFAULT CHARSET utf8 COMMENT '';
 
 DROP TABLE ingredients;
+
+INSERT INTO
+  ingredients (name, quantity, recipeId)
+VALUES
+  ('Name', 'Quantity', 1);
+
+SELECT
+  i.*,
+  r.*
+FROM
+  ingredients i
+  JOIN recipes r ON i.recipeId = r.id
+WHERE
+  i.id = 2;
