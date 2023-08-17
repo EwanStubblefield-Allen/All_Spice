@@ -20,9 +20,21 @@ public class IngredientsService
     return ingredient ?? throw new Exception($"[NO INGREDIENT MATCHES THE ID: {ingredientId}]");
   }
 
+  internal List<Ingredient> GetIngredientsByRecipeId(int recipeId)
+  {
+    return _ingredientsRepository.GetIngredientsByRecipeId(recipeId);
+  }
+
   internal Ingredient CreateIngredient(Ingredient ingredientData)
   {
     int ingredientId = _ingredientsRepository.CreateIngredient(ingredientData);
     return GetIngredientById(ingredientId);
+  }
+
+  internal Ingredient RemoveIngredient(int ingredientId)
+  {
+    Ingredient ingredient = GetIngredientById(ingredientId);
+    _ingredientsRepository.RemoveIngredient(ingredientId);
+    return ingredient;
   }
 }

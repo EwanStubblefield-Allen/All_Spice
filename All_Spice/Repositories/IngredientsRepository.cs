@@ -17,12 +17,21 @@ public class IngredientsRepository
   internal Ingredient GetIngredientById(int ingredientId)
   {
     string sql = @"
-    SELECT i.*, r.*
-    FROM ingredients i
-    JOIN recipes r ON i.recipeId = r.id
-    WHERE i.id = @ingredientId
+    SELECT *
+    FROM ingredients
+    WHERE id = @ingredientId
     ;";
     return _db.QueryFirstOrDefault<Ingredient>(sql, new { ingredientId });
+  }
+
+  internal List<Ingredient> GetIngredientsByRecipeId(int recipeId)
+  {
+    string sql = @"
+    SELECT *
+    FROM ingredients
+    WHERE recipeId = @recipeId
+    ;";
+    return _db.Query<Ingredient>(sql, new { recipeId }).ToList();
   }
 
   internal int CreateIngredient(Ingredient ingredientData)
@@ -34,5 +43,11 @@ public class IngredientsRepository
     SELECT LAST_INSERT_ID()
     ;";
     return _db.ExecuteScalar<int>(sql, ingredientData);
+  }
+
+  internal void RemoveIngredient(int ingredientId)
+  {
+    string sql = "DELETE FROM ingredients WHERE id = @ingredientId LIMIT 1;";
+    _db.Execute(sql, new { ingredientId });
   }
 }

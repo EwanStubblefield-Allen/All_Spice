@@ -32,4 +32,18 @@ public class IngredientsController : ControllerBase
       return BadRequest(e.Message);
     }
   }
+
+  [HttpDelete("{ingredientId}")]
+  public ActionResult<Ingredient> RemoveIngredient(int ingredientId)
+  {
+    try
+    {
+      Ingredient ingredient = _ingredientsService.RemoveIngredient(ingredientId);
+      return Ok(ingredient);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
 }
