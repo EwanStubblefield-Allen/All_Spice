@@ -5,12 +5,14 @@ namespace All_Spice.Controllers;
 public class AccountController : ControllerBase
 {
   private readonly AccountService _accountService;
+  private readonly RecipesService _recipesService;
   private readonly FavoritesService _favoritesService;
   private readonly Auth0Provider _auth0Provider;
 
-  public AccountController(AccountService accountService, FavoritesService favoritesService, Auth0Provider auth0Provider)
+  public AccountController(AccountService accountService, RecipesService recipesService, FavoritesService favoritesService, Auth0Provider auth0Provider)
   {
     _accountService = accountService;
+    _recipesService = recipesService;
     _favoritesService = favoritesService;
     _auth0Provider = auth0Provider;
   }
@@ -31,13 +33,29 @@ public class AccountController : ControllerBase
   }
 
   [Authorize]
-  [HttpGet("favorites")]
-  public async Task<ActionResult<List<ProfileFav>>> GetFavoritesByAccountId()
+  [HttpGet("recipes")]
+  public async Task<ActionResult<List<Recipe>>> GetRecipesByAccountId()
   {
     try
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-      List<ProfileFav> favorites = _favoritesService.GetFavoritesByAccountId(userInfo.Id);
+      List<Recipe> recipes = _recipesService.GetRecipesByAccountId(userInfo.Id);
+      return Ok(recipes);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+  [Authorize]
+  [HttpGet("favorites")]
+  public async Task<ActionResult<List<RecipeFav>>> GetFavoritesByAccountId()
+  {
+    try
+    {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      List<RecipeFav> favorites = _favoritesService.GetFavoritesByAccountId(userInfo.Id);
       return Ok(favorites);
     }
     catch (Exception e)

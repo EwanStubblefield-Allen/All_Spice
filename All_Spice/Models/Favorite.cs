@@ -12,7 +12,7 @@ public class Favorite
   public int RecipeId { get; set; }
 }
 
-public class ProfileFav : Profile
+public class RecipeFav : Recipe
 {
   public int FavoriteId { get; set; }
 }

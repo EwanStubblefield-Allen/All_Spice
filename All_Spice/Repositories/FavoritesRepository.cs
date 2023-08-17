@@ -20,20 +20,22 @@ public class FavoritesRepository
     return _db.QueryFirstOrDefault<Favorite>(sql, new { favoriteId });
   }
 
-  internal List<ProfileFav> GetFavoritesByAccountId(string accountId)
+  internal List<RecipeFav> GetFavoritesByAccountId(string accountId)
   {
     string sql = @"
-    SELECT f.*, a.*
+    SELECT f.*, r.*, a.*
     FROM favorites f 
+    JOIN recipes r ON r.id = f.recipeId
     JOIN accounts a ON a.id = f.accountId
     WHERE accountId = @accountId
     ;";
-    return _db.Query<Favorite, ProfileFav, ProfileFav>(
+    return _db.Query<Favorite, RecipeFav, Profile, RecipeFav>(
     sql,
-    (favorite, profile) =>
+    (favorite, recipe, profile) =>
     {
-      profile.FavoriteId = favorite.Id;
-      return profile;
+      recipe.FavoriteId = favorite.Id;
+      recipe.Creator = profile;
+      return recipe;
     },
     new { accountId }).ToList();
   }

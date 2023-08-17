@@ -25,6 +25,11 @@ public class RecipesService
     return recipe ?? throw new Exception($"[NO RECIPE MATCHES THE ID: {recipeId}]");
   }
 
+  internal List<Recipe> GetRecipesByAccountId(string accountId)
+  {
+    return _recipesRepository.GetRecipesByAccountId(accountId);
+  }
+
   internal Recipe CreateRecipe(Recipe recipeData)
   {
     int recipeId = _recipesRepository.CreateRecipe(recipeData);

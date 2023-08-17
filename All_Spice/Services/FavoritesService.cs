@@ -20,7 +20,7 @@ public class FavoritesService
     return favorite ?? throw new Exception($"[NO FAVORITE MATCHES THE ID: {favoriteId}]");
   }
 
-  internal List<ProfileFav> GetFavoritesByAccountId(string accountId)
+  internal List<RecipeFav> GetFavoritesByAccountId(string accountId)
   {
     return _favoritesRepository.GetFavoritesByAccountId(accountId);
   }

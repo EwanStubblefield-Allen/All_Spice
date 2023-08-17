@@ -1,4 +1,5 @@
-import { SocketHandler } from "../utils/SocketHandler.js";
+import { logger } from "../utils/Logger.js"
+import { SocketHandler } from "../utils/SocketHandler.js"
 
 class TestHandler extends SocketHandler {
 
@@ -8,8 +9,8 @@ class TestHandler extends SocketHandler {
       .on('IS_TESTED', this.onTest)
   }
 
-  onTest(payload){
-    console.log('Recieved IS_TESTED', payload)
+  onTest(payload) {
+    logger.log('Received IS_TESTED', payload)
   }
 
 }
