@@ -22,11 +22,11 @@ CREATE TABLE recipes(
     'Cheese',
     'Italian',
     'Mexican',
-    'Coffee'
+    'Specialty Coffee'
   ) NOT NULL DEFAULT 'Soup' COMMENT 'Everything is just soup',
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
-  creatorId VARCHAR(255) NOT NULL,
+  creatorId VARCHAR(255) NOT NULL COMMENT 'Recipe account reference',
   FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) DEFAULT CHARSET utf8 COMMENT '';
 
@@ -77,13 +77,13 @@ LIMIT
   1;
 
 CREATE TABLE ingredients(
-  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'primary',
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'primary key',
   name VARCHAR(255) NOT NULL COMMENT 'Ingredient name',
   quantity VARCHAR(255) NOT NULL COMMENT 'Ingredient quantity',
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
   recipeId INT NOT NULL COMMENT 'Ingredient recipe reference',
-  FOREIGN KEY (recipeId) REFERENCES recipes(id)
+  FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
 ) DEFAULT CHARSET utf8 COMMENT '';
 
 DROP TABLE ingredients;
@@ -101,3 +101,22 @@ FROM
   JOIN recipes r ON i.recipeId = r.id
 WHERE
   i.id = 2;
+
+CREATE TABLE favorites(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'primary key',
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
+  recipeId INT NOT NULL COMMENT 'Ingredient recipe reference',
+  accountId VARCHAR(255) NOT NULL COMMENT 'Ingredient recipe reference',
+  FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE,
+  FOREIGN KEY (accountId) REFERENCES accounts(id) ON DELETE CASCADE
+) DEFAULT CHARSET utf8 COMMENT '';
+
+DROP TABLE favorites;
+
+SELECT
+  *
+FROM
+  favorites
+WHERE
+  accountId = '64adc5560e2c4b808960071a';
