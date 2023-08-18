@@ -2,7 +2,7 @@
   <div class="modal fade" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-body container-fluid p-lg-0">
+        <div class="container-fluid">
           <slot></slot>
         </div>
       </div>

@@ -14,9 +14,9 @@ public class RecipesService
     _recipesRepository = recipesRepository;
   }
 
-  internal List<Recipe> GetRecipe()
+  internal List<Recipe> GetRecipe(Recipe recipeData)
   {
-    return _recipesRepository.GetRecipes();
+    return _recipesRepository.GetRecipes(recipeData);
   }
 
   internal Recipe GetRecipeById(int recipeId)

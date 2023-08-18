@@ -8,8 +8,8 @@ export class Recipe {
     this.instructions = data.instructions
     this.img = data.img
     this.category = data.category
-    this.createdAt = new Date(data.createdAt).toLocaleString()
-    this.updatedAt = new Date(data.updatedAt).toLocaleString()
+    this.createdAt = data.createdAt
+    this.updatedAt = data.updatedAt
     this.creatorId = data.creatorId
     this.creator = new Profile(data.creator)
   }

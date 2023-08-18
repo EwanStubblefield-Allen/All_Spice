@@ -37,7 +37,9 @@ SELECT
   a.*
 FROM
   recipes r
-  JOIN accounts a ON r.creatorId = a.id;
+  JOIN accounts a ON r.creatorId = a.id
+WHERE
+  title LIKE '%senior%';
 
 INSERT INTO
   recipes (title, instructions, img, category, creatorId)

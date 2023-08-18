@@ -14,12 +14,14 @@ public class RecipesRepository
     _db = db;
   }
 
-  internal List<Recipe> GetRecipes()
+  internal List<Recipe> GetRecipes(Recipe recipeData)
   {
+    recipeData.Title = $"%{recipeData.Title}%";
     string sql = @"
     SELECT r.*, a.*
     FROM recipes r
     JOIN accounts a ON r.creatorId = a.id
+    WHERE title LIKE @Title
     ;";
     return _db.Query<Recipe, Profile, Recipe>(
       sql,
@@ -27,8 +29,8 @@ public class RecipesRepository
       {
         recipe.Creator = profile;
         return recipe;
-      }
-    ).ToList();
+      },
+      recipeData).ToList();
   }
 
   internal Recipe GetRecipeById(int recipeId)
