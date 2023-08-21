@@ -7,14 +7,8 @@ class RecipesService {
     AppState.activeRecipe = recipe
   }
 
-  async getRecipes(query) {
-    let res
-
-    if (query) {
-      res = await api.get(`api/recipes?title=${query.trim()}`)
-    } else {
-      res = await api.get('api/recipes')
-    }
+  async getRecipes(query = '') {
+    const res = await api.get(`api/recipes?title=${query.trim()}`)
     AppState.recipes = res.data.map(d => new Recipe(d))
   }
 

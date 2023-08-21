@@ -8,7 +8,7 @@
       <form @submit.prevent="handleSubmit()" class="row text-dark py-3">
         <div class="col-7 form-group">
           <label for="title" class="px-2 fs-5">Title</label>
-          <input v-model="editable.title" id="title" class="form-control" type="text" placeholder="Title..." required>
+          <input v-model="editable.title" id="title" class="form-control" type="text" minlength="3" maxlength="255" placeholder="Title..." required>
         </div>
 
         <div class="col-5 form-group">
@@ -21,12 +21,12 @@
 
         <div class="col-12 form-group py-2">
           <label for="instructions" class="px-2 fs-5">Instructions</label>
-          <input v-model="editable.instructions" id="instructions" class="form-control" type="text" placeholder="Instructions..." required>
+          <input v-model="editable.instructions" id="instructions" class="form-control" type="text" minlength="3" maxlength="255" placeholder="Instructions..." required>
         </div>
 
         <div class="col-12 form-group pb-2">
           <label for="img" class="px-2 fs-5">Image</label>
-          <input v-model="editable.img" id="img" class="form-control" type="url" placeholder="Url..." required>
+          <input v-model="editable.img" id="img" class="form-control" type="url" minlength="3" maxlength="255" placeholder="Url..." required>
         </div>
 
         <div class="text-end pt-3">
