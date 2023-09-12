@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="col-8 col-md-6 col-lg-4 d-flex align-items-center text-center bg-light text-green filter px-0">
+    <div v-if="account.id" class="col-8 col-md-6 col-lg-4 d-flex align-items-center text-center bg-light text-green filter px-0">
       <p @click="getRecipes()" class="flex-grow-1 selectable py-2">Home</p>
       <p @click="getRecipesByAccountId()" class="flex-grow-1 selectable py-2">My Recipes</p>
       <p @click="getFavoritesByAccountId()" class="flex-grow-1 selectable py-2">Favorites</p>
@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { AppState } from '../AppState.js'
 import { recipesService } from '../services/RecipesService.js'
 import { favoritesService } from '../services/FavoritesService.js'
 import Pop from '../utils/Pop.js'
@@ -41,6 +42,7 @@ export default {
 
     return {
       editable,
+      account: computed(() => AppState.account),
 
       async getRecipes() {
         try {
