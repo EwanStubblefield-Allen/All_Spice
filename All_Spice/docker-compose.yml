@@ -1,6 +1,6 @@
 version: '3'
 services:
   web:
-    image: ewanstubblefieldallen/keepr:latest
+    image: ewanstubblefieldallen/allspice:latest
     ports:
       - "7046:80"
