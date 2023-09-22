@@ -7,7 +7,7 @@
     <router-view />
   </main>
 
-  <div @click="isEditing()" class="d-flex justify-content-center align-items-center add-position selectable" data-bs-toggle="modal" data-bs-target="#recipeForm">
+  <div v-if="appState.account.id" @click="isEditing()" class="d-flex justify-content-center align-items-center add-position selectable" data-bs-toggle="modal" data-bs-target="#recipeForm">
     <i class="mdi mdi-plus fs-1"></i>
   </div>
 
