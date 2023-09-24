@@ -4,3 +4,4 @@ services:
     image: ewanstubblefieldallen/allspice:latest
     ports:
       - "7046:80"
+    restart: unless-stopped
