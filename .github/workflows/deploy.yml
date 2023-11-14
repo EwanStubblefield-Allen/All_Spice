@@ -43,7 +43,7 @@ jobs:
           docker buildx create --use
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           cd ./$ROOT
-          docker buildx build --platform linux/amd64 -t $DOCKER_USERNAME/allspice:$DOCKER_IMAGE_TAG --push .
+          docker buildx build --platform linux/amd64 -t $DOCKER_USERNAME/$DOCKER_IMAGE --push .
 
       - name: SSH Deploy 📔
         run: |
