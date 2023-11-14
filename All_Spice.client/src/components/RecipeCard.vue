@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between align-items-start">
       <p class="category-bg fs-5 px-3 m-3">{{ recipeProp.category }}</p>
       <i v-if="isFav" @click="removeFavorite()" class="mdi mdi-heart fs-4 text-bg rounded-bottom mx-2 px-1 selectable"></i>
-      <i v-else @click="createFavorite()" class="mdi mdi-heart-outline fs-4 text-bg rounded-bottom mx-2 px-1 selectable"></i>
+      <i v-else-if="account.id" @click="createFavorite()" class="mdi mdi-heart-outline fs-4 text-bg rounded-bottom mx-2 px-1 selectable"></i>
     </div>
     <div @click="setData()" class="text-bg m-2 p-1 rounded selectable" data-bs-toggle="modal" data-bs-target="#recipeDetails">
       <p class="fs-5 fw-bold">{{ recipeProp.title }}</p>
@@ -31,6 +31,7 @@ export default {
 
   setup(props) {
     return {
+      account: computed(() => AppState.account),
       isFav: computed(() => AppState.favorites.find(f => f.id == props.recipeProp.id)),
       backgroundImg: computed(() => `url("${props.recipeProp.img}")`),
 
