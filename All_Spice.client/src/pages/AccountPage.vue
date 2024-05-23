@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-  img {
-    max-width: 100px;
-  }
+img {
+  max-width: 100px;
+}
 </style>

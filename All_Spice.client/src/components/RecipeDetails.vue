@@ -157,26 +157,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.position {
+  position: absolute;
+  top: 0px;
+  right: 5%;
+}
+
+.food-card {
+  border-radius: 5px;
+  background: #F0F4F2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (min-width: 960px) {
   img {
-    object-fit: cover;
-    object-position: center;
+    height: 90vh;
   }
-
-  .position {
-    position: absolute;
-    top: 0px;
-    right: 5%;
-  }
-
-  .food-card {
-    border-radius: 5px;
-    background: #F0F4F2;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  }
-
-  @media screen and (min-width: 960px) {
-    img {
-      height: 90vh;
-    }
-  }
+}
 </style>

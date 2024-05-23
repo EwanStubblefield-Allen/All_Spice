@@ -75,51 +75,51 @@ export default {
 </script>
 
 <style scoped>
-  a:hover {
-    text-decoration: none;
-  }
+a:hover {
+  text-decoration: none;
+}
 
-  .nav-link {
-    text-transform: uppercase;
-  }
+.nav-link {
+  text-transform: uppercase;
+}
 
-  .navbar-nav .router-link-exact-active {
-    border-bottom: 2px solid var(--bs-success);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+.navbar-nav .router-link-exact-active {
+  border-bottom: 2px solid var(--bs-success);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
-  .bg-img {
-    background-image: url(../assets/img/unsplash_pqJ21tErTgI.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: none;
-    margin: 3vh;
-    border-radius: 5px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-  }
+.bg-img {
+  background-image: url(../assets/img/unsplash_pqJ21tErTgI.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: none;
+  margin: 3vh;
+  border-radius: 5px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
 
-  .sub-title {
-    font-size: 1em;
-    text-shadow: 0px 2px 3px #000;
-  }
+.sub-title {
+  font-size: 1em;
+  text-shadow: 0px 2px 3px #000;
+}
 
+.filter {
+  position: absolute;
+  bottom: -20px;
+  left: 16%;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (min-width: 770px) {
   .filter {
-    position: absolute;
-    bottom: -20px;
-    left: 16%;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    left: 25%;
   }
+}
 
-  @media screen and (min-width: 770px) {
-    .filter {
-      left: 25%;
-    }
+@media screen and (min-width: 992px) {
+  .filter {
+    left: 33%;
   }
-
-  @media screen and (min-width: 992px) {
-    .filter {
-      left: 33%;
-    }
-  }
+}
 </style>

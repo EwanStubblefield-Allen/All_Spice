@@ -1,6 +1,6 @@
-import { AppState } from "../AppState.js"
-import { Recipe } from "../models/Recipe.js"
-import { api } from "./AxiosService.js"
+import { AppState } from '../AppState.js'
+import { Recipe } from '../models/Recipe.js'
+import { api } from './AxiosService.js'
 
 class FavoritesService {
   async getFavoritesByAccountId(isRecipe) {

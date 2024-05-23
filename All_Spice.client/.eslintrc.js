@@ -2,10 +2,7 @@
 module.exports = {
   root: true,
 
-  extends: [
-    'plugin:vue/vue3-essential',
-    'eslint:recommended'
-  ],
+  extends: ['plugin:vue/vue3-essential', 'eslint:recommended'],
 
   parserOptions: {
     ecmaVersion: 'latest'
@@ -15,23 +12,25 @@ module.exports = {
     'block-spacing': 'warn',
     'comma-dangle': ['warn', 'never'],
     'comma-spacing': 'warn',
-    'eol-last': ['warn', 'never'],
-    'indent': ['warn', 2, { 'SwitchCase': 1 }],
-    'jsx-quotes': ['warn', 'prefer-single'],
+    'indent': ['warn', 2, { SwitchCase: 1 }],
+    'jsx-quotes': ['warn', 'prefer-double'],
     'key-spacing': 'warn',
     'keyword-spacing': 'warn',
-    'no-multiple-empty-lines': ['warn', { 'max': 1 }],
+    'no-multiple-empty-lines': ['warn', { max: 1 }],
     'no-trailing-spaces': 'warn',
-    'object-curly-newline': ['warn', { 'consistent': true }],
+    'object-curly-newline': ['warn', { consistent: true }],
     'operator-assignment': ['warn', 'always'],
     'no-console': 'warn',
     'no-debugger': 'warn',
     'no-unused-vars': 1,
     'no-whitespace-before-property': 'warn',
-    'padded-blocks': ['warn', { 'blocks': 'never' }],
+    'padded-blocks': ['warn', { blocks: 'never' }],
     'semi': ['warn', 'never'],
     'space-before-blocks': 'warn',
-    'space-before-function-paren': [1, 'never'],
+    'space-before-function-paren': [
+      'error',
+      { anonymous: 'never', named: 'never', asyncArrow: 'always' }
+    ],
     'space-infix-ops': 'warn',
     'vue/html-self-closing': 0,
     'vue/multi-word-component-names': 'off',

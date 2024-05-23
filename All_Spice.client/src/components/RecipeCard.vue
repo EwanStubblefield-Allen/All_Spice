@@ -65,11 +65,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .card-bg {
-    border-radius: 5px;
-    background: v-bind(backgroundImg);
-    background-position: center;
-    background-size: cover;
-    height: 40vh;
-  }
+.card-bg {
+  border-radius: 5px;
+  background: v-bind(backgroundImg);
+  background-position: center;
+  background-size: cover;
+  height: 40vh;
+}
 </style>
